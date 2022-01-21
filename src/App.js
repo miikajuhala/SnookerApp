@@ -7,7 +7,6 @@ import Login from './Components/Login';
 import Mainpage from './Components/Mainpage';
 import Snooker from './Components/Snooker';
 import Results from './Components/Results';
-import Settings from './Components/Settings';
 import BottomNavigation1 from './Components/BottomNavigation1';
 
 function App() {
@@ -51,7 +50,7 @@ function App() {
         <Route path="/results"  element={<Results />}></Route>
     </Routes>
     {/* //Navigation bar */}
-     {/* <BottomNavigation1></BottomNavigation1>  */}
+     <BottomNavigation1></BottomNavigation1> 
 
   </>
     
