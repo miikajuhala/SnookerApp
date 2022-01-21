@@ -19,37 +19,37 @@ import LoginIcon from '@mui/icons-material/Login';
 import loginImg from './login.jpg'
 
 
+//Confiq for swiper
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
 
-            function TabPanel(props) {
-                const { children, value, index, ...other } = props;
-            
-                return (
-                <Typography
-                    component="div"
-                    role="tabpanel"
-                    hidden={value !== index}
-                    id={`action-tabpanel-${index}`}
-                    aria-labelledby={`action-tab-${index}`}
-                    {...other}
-                >
-                    {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-                </Typography>
-                );
-            }
-  
+    return (
+    <Typography
+        component="div"
+        role="tabpanel"
+        hidden={value !== index}
+        id={`action-tabpanel-${index}`}
+        aria-labelledby={`action-tab-${index}`}
+        {...other}
+    >
+        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </Typography>
+    );
+}
+  //Confiq for swiper
   TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
   };
-  
+  //Confiq for swiper
     function a11yProps(index) {
         return {
         id: `action-tab-${index}`,
         'aria-controls': `action-tabpanel-${index}`,
         };
     }
-  
+  //Confiq for swiper
   const fabStyle = {
     position: 'absolute',
     bottom: 16,
@@ -115,48 +115,50 @@ const getToken = () => {
     axios.post(url+"login", {
         username:user.username, password:user.password
       })
-        .then((response) => {
-          console.log(response);
+    .then((response) => {
+    console.log(response);
       
-            const jwtToken = response.headers.authorization
+    const jwtToken = response.headers.authorization
 
-            if (jwtToken !== null) {
-                sessionStorage.setItem("jwt", jwtToken)
-                sessionStorage.setItem("username", jwt(jwtToken).sub)
-                setUser({...user, username: "",password:""})
-                    props.setLogged(true);
-                    console.log(sessionStorage.getItem("jwt"))
-                    setOpen(true)
-                    setMsg("Logged in succesfully!")
+    if (jwtToken !== null) {
+      sessionStorage.setItem("jwt", jwtToken)
+      sessionStorage.setItem("username", jwt(jwtToken).sub)
+      setUser({
+        ...user,
+        username: "",
+        password: ""
+      })
+      props.setLogged(true);
+      console.log(sessionStorage.getItem("jwt"))
+      setOpen(true)
+      setMsg("Logged in succesfully!")
 
-                   
-                  }
-            }, (error) => {
-                console.log(error)
-                setMsg(error+"error")
-                setOpen(true)
-            });
- 
+    }
+    }, (error) => {
+      console.log(error)
+      setMsg(error + "error")
+      setOpen(true)
+    });
     
     }
 
     //New user register and auto-login right after
-    function createNewUser(){
+    function createNewUser() {
 
-      axios.post(url+"api/register",{
-       username: user.username,
-       passwordHash: user.password,
-       role: "USER"
-    })
-      .then(function (response) {
-        //kirjaa suoraan sisään kun rekisteröityy
-        getToken();
-        
+      axios.post(url + "api/register", {
+          username: user.username,
+          passwordHash: user.password,
+          role: "USER"
+        })
+        .then(function (response) {
+          //kirjaa suoraan sisään kun rekisteröityy
+          getToken();
 
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     
     }
     
@@ -176,17 +178,19 @@ return(
 
 {/* Paper that shows if user already logged in */}
 {props.logged===true && 
-<Paper  
-style={{
-padding: 40,
-margin: 10,
-border: "1px solid black"
-}}> U are already logged in 
+<Paper style=
+{{
+    padding: 40,
+    margin: 10,
+    border: "1px solid black"
+}}> U are logged in 
 </Paper>}
 
-        {props.logged ===false && <div className="loginImage">
-        {props.logged ===false && <img src={loginImg} width="300" style={{position: 'relative'}} alt="login"/>}
-    </div>}
+{props.logged ===false && 
+<div className="image-container">
+    <img src={loginImg} width="300" style={{position: 'relative'}} alt="logo" />
+</div>   
+}
    
 <Grid
   container
@@ -194,7 +198,6 @@ border: "1px solid black"
   direction="column"
   alignItems="center"
   justifyContent="top"
-  style={{ minHeight: '100vh' }}
 >
 
     {props.logged ===false && 

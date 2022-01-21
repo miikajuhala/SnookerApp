@@ -5,10 +5,6 @@ import {FcAbout} from 'react-icons/fc';
 import { Button, Grid } from "@mui/material";
 
 export default function Menu(props) {
-
-
-  
-
     return (
     <>
     
