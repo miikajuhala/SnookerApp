@@ -47,6 +47,10 @@ export default function Snooker(props) {
         if(e.dragData.type==="foul"){
             setplayer({...player, points: player.points + e.dragData.points  })}
 
+        props.restartGame(true)
+        props.setMsg("Added "+e.dragData.points+" points to "+player.name)
+        
+        
     }
 
     
@@ -84,7 +88,7 @@ export default function Snooker(props) {
                 <Paper elevation={20}>
                 <DropTarget 
                     targetKey="foo" 
-                    onHit={(e)=>handleHit(e, props.player2, props.setPlayer2)}>
+                    onHit={(e)=>{handleHit(e, props.player2, props.setPlayer2)}}>
                     <Box className="my_target"  sx={{height:450 }} >Player 2 target</Box>
                 </DropTarget>
                 </Paper>
