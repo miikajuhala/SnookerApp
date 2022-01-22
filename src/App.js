@@ -8,6 +8,8 @@ import Mainpage from './Components/Mainpage';
 import Snooker from './Components/Snooker';
 import Results from './Components/Results';
 import BottomNavigation1 from './Components/BottomNavigation1';
+import Settings from './Components/Settings';
+
 
 function App() {
 
@@ -48,6 +50,7 @@ function App() {
         <Route path="/"  element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
         <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame}/>}> </Route>
         <Route path="/results"  element={<Results />}></Route>
+        <Route path="/settings" element={<Settings />}></Route>
     </Routes>
     {/* //Navigation bar */}
      <BottomNavigation1></BottomNavigation1> 

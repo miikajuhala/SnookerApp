@@ -19,6 +19,12 @@ export default function Snooker(props) {
             backgroundSize: "contain",
            
             
+        },
+        targetContainer:{
+            height: "100%",
+            border: 1, 
+            borderRadius: 1,
+            
         }
     };
 
@@ -43,35 +49,38 @@ export default function Snooker(props) {
 
     return (
     <>
+
       
     <Box sx={{ height: "100%", width: '100%', minWidth:364}}   >
             
         <Grid container >
             {/* snooker table, with draggable snookerballs */}
             
-            <Grid item xs={1} sm={3} xl={5} sx={{backgroundColor: "blue", height:"100%"}}> 
+            <Grid  item xs={1.4} sm={3} xl={5} sx={styles.targetContainer}> 
                 {/* player 1 target */}
                 <DropTarget 
+                    
                     targetKey="foo" 
                     onHit={(e)=>handleHit(e, props.player1, props.setPlayer1)}>
-                    <Box sx={{height:500}}> Player 1 target</Box>
+                    <Box className="my_target" sx={{height:500}}> Player 1 target</Box>
                 </DropTarget>
             </Grid>
 
             {/*Snooker table component containing draggable balls  */}
-            <Grid item  xs={10} sm={6} xl={3}    sx={{height:500}} style={styles.paperContainer}>
+            <Grid item  xs={9.2} sm={6} xl={3}    sx={{height:500}} style={styles.paperContainer}>
                 <SnookerTable totalBalls={props.totalBalls} props={props} ></SnookerTable>
         
             </Grid>
             
             
 
-            <Grid item xs={1} sm={3} xl={4} sx={{backgroundColor: "blue", height:"100%"}}>
+            <Grid item xs={1.4} sm={3} xl={4} sx={styles.targetContainer}>
                 {/* player 2 target */}
                 <DropTarget 
                     targetKey="foo" 
-                    onHit={(e)=>handleHit(e, props.player2, props.setPlayer2)}> 
-                        <Box sx={{height:500}} >Player 2 target</Box>
+                    onHit={(e)=>handleHit(e, props.player2, props.setPlayer2)}>
+                        <Box className="my_target" sx={{height:500}} >Player 2 target</Box>
+                        
                 </DropTarget>
             </Grid>
             
@@ -88,6 +97,7 @@ export default function Snooker(props) {
             <>{props.player2.points +" "}</>
             scores 
         </Paper>
+        {/* Some kind of settings / restart options are needed ez to access */}
     </Box>
 
     </>
