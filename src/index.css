@@ -56,4 +56,8 @@ code {
   width: 50%;
   height: 50%;
 }
-.highlighted .my_target {background-color: #04AA6D}
+.highlighted .my_target {background-color: #22c24a}
+
+.backround {
+  background-color: #f8f0e2;
+}

@@ -42,7 +42,7 @@ function App() {
 
   <>
      {/* <Menubar with login/register */}
-     <Menu logout={Logout} logged={logged} setLogged={setLogged}></Menu>
+     {/* <Menu logout={Logout} logged={logged} setLogged={setLogged}></Menu> */}
 
     {/* <Body with all functionalities */}
     <Routes>
