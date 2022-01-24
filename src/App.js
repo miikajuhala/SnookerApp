@@ -85,12 +85,12 @@ function App() {
         <Route path="/settings" element={<Settings />}></Route>
     </Routes>
     {/* //Navigation bar */}
-     <BottomNavigation1></BottomNavigation1> 
+     {/* <BottomNavigation1 ></BottomNavigation1>  */}
 
      <Snackbar
         lenght={13}
         open={open}
-        anchorOrigin={{ vertical:"top", horizontal:"center" }}
+        anchorOrigin={{ vertical:"bottom", horizontal:"center" }}
         autoHideDuration={2000}
         onClose={()=>setOpen(false)}
         message={<Alert severity="success">{msg}</Alert>}

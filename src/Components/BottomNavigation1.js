@@ -17,8 +17,8 @@ export default function BottomNavigation1() {
   
   
   return (
-    <Box sx={{ width: 1 }}>
-      <BottomNavigation
+    <Box  sx={{ width: 1 }}>
+      <BottomNavigation className="backround"
         showLabels
         value={value}
         onChange={(event, newValue) => {
@@ -32,7 +32,7 @@ export default function BottomNavigation1() {
           }
         }}
       >
-        <BottomNavigationAction label="" value={"back"} icon={<ArrowBack />} />
+        <BottomNavigationAction label="" value={"back"} icon={<ArrowBack className="backround"/>} />
         <BottomNavigationAction label="Start" value={"/"} icon={<Home />} />
         <BottomNavigationAction label="Settings" value={"/settings"} icon={<Settings />} />
       </BottomNavigation>

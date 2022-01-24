@@ -37,14 +37,14 @@ export default function SnookerTable(props) {
             </Grid>
             <Grid item>
                 {props.totalBalls.brown &&
-                <DragDropContainer  targetKey="foo" dragData={{points: 3, amount:1, type: "colors", ball: "green"}} >
+                <DragDropContainer  targetKey="foo" dragData={{points: 3, amount:1, type: "colors", ball: "brown"}} >
                 <img  className="img" src={brown} alt="brown"></img>
                 </DragDropContainer>
                 }
             </Grid>
             <Grid item> 
                 {props.totalBalls.green &&
-                <DragDropContainer targetKey="foo" dragData={{points: 4, amount:1, type: "colors", ball: "brown"}} >
+                <DragDropContainer targetKey="foo" dragData={{points: 4, amount:1, type: "colors", ball: "green"}} >
                 <img  className="img" src={green} alt="green"></img>
                 </DragDropContainer>
                 }
@@ -88,6 +88,7 @@ export default function SnookerTable(props) {
                 </DragDropContainer>
                 }
             </Grid>
+        
         </Grid>
     </Box>
     </>

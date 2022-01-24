@@ -1,15 +1,16 @@
 
 import React from "react";
-import { Box, Paper, Grid, Typography, Container} from "@mui/material";
-import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
+import { Box, Paper, Grid, Typography} from "@mui/material";
+import { DropTarget } from 'react-drag-drop-container';
 import SnookerTable from "./SnookerTable";
 import table2 from "./table2.png"
-import { minWidth, width } from "@mui/system";
 import Foul from "./Foul";
+import { Score } from "@mui/icons-material";
+import Scores from "./Scores";
 
 
 
-
+//TODO: Pirun siisti jos mukaan embedded browseriin sääntösivu joltai netisivulta
 
 export default function Snooker(props) {
 
@@ -25,12 +26,14 @@ export default function Snooker(props) {
         targetContainer:{
             height: "100%",
             mt:3,
-            backgroundColor: "white"
+            backgroundColor: "white",
+            bg: "white"
         }
     };
 
+    //TODO: doesnt understand last red ball rule yet
     const handleHit =(e, player, setplayer)=>{
-        console.log(e)
+        
         //if red ball, -1 red ball and add score for player
         if(e.dragData.type==="reds"){
             props.settotalBalls({...props.totalBalls, reds: props.totalBalls.reds-1})
@@ -47,9 +50,10 @@ export default function Snooker(props) {
         if(e.dragData.type==="foul"){
             setplayer({...player, points: player.points + e.dragData.points  })}
 
-        props.restartGame(true)
-        props.setMsg("Added "+e.dragData.points+" points to "+player.name)
-        
+        props.setOpen(false);
+        props.setOpen(true)
+        props.setMsg(e.dragData.points+" points added to "+player.name)
+        console.log(props.totalBalls)
         
     }
 
@@ -62,12 +66,17 @@ export default function Snooker(props) {
       
     <Box className="backround" sx={{ height: "100%", width: '100%', minWidth:364}} >
             
+            {/* Scores */}
+        <Scores props={props}></Scores>
+
+        
+        {/* snooker table, with draggable snookerballs */}
         <Grid container >
-            {/* snooker table, with draggable snookerballs */}
-            
+         
+
             {/* player 1 target */}
-            <Grid  item xs={1.33} sm={3} xl={5} sx={styles.targetContainer}> 
-            <Paper  elevation={20}>
+            <Grid  item xs={1.33} sm={3.15} xl={4.5} sx={styles.targetContainer}> 
+            <Paper  elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
                 <DropTarget 
                     targetKey="foo" 
                     onHit={(e)=>handleHit(e, props.player1, props.setPlayer1)}>
@@ -77,15 +86,15 @@ export default function Snooker(props) {
             </Grid>
 
             {/*Snooker table component containing draggable balls  */}
-            <Grid item  xs={9.33} sm={6} xl={3}    sx={{height:500}} style={styles.paperContainer}>
+            <Grid item  xs={9.33} sm={5.7} xl={3}    sx={{height:500}} style={styles.paperContainer}>
                 <SnookerTable totalBalls={props.totalBalls} props={props} ></SnookerTable>
         
             </Grid>
             
             
             {/* player 2 target */}
-            <Grid item xs={1.33} sm={3} xl={4} sx={styles.targetContainer}>
-                <Paper elevation={20}>
+            <Grid item xs={1.33} sm={3.15} xl={4.5} sx={styles.targetContainer}>
+                <Paper elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
                 <DropTarget 
                     targetKey="foo" 
                     onHit={(e)=>{handleHit(e, props.player2, props.setPlayer2)}}>
