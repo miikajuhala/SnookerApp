@@ -29,21 +29,21 @@ export default function SnookerTable(props) {
         >
         {/* sx={{backgroundImage: `url(${yellow})`,  backgroundRepeat: 'no-repeat',backgroundPosition: "center", backgroundSize: "contain"}} */}
             <Grid item  sx={{}}>  
-                {props.totalBalls.yellow &&
+                {props.props.totalBalls.yellow &&
                 <DragDropContainer targetKey="foo" dragData={{points: 2, amount:1, type: "colors", ball: "yellow"}} >
                 <img className="img"  src={yellow}alt="yellow"></img>
                 </DragDropContainer>
                 }
             </Grid>
             <Grid item>
-                {props.totalBalls.brown &&
+                {props.props.totalBalls.brown &&
                 <DragDropContainer  targetKey="foo" dragData={{points: 3, amount:1, type: "colors", ball: "brown"}} >
                 <img  className="img" src={brown} alt="brown"></img>
                 </DragDropContainer>
                 }
             </Grid>
             <Grid item> 
-                {props.totalBalls.green &&
+                {props.props.totalBalls.green &&
                 <DragDropContainer targetKey="foo" dragData={{points: 4, amount:1, type: "colors", ball: "green"}} >
                 <img  className="img" src={green} alt="green"></img>
                 </DragDropContainer>
@@ -60,29 +60,29 @@ export default function SnookerTable(props) {
         alignItems={"center"}
         >
             <Grid item  sx={{mt:11.5}}> 
-                {props.totalBalls.blue &&
+                {props.props.totalBalls.blue &&
                 <DragDropContainer targetKey="foo" dragData={{points: 5, amount:1, type: "colors", ball: "blue"}} >
                 <img className="img"  src={blue} alt="img"></img>
                 </DragDropContainer>
                 }
             </Grid>
             <Grid item  sx={{mt:10}}> 
-                {props.totalBalls.pink &&
+                {props.props.totalBalls.pink &&
                 <DragDropContainer targetKey="foo" dragData={{points: 6, amount:1, type: "colors", ball: "pink"}} >
                 <img  className="img" src={pink} alt="img"></img>
                 </DragDropContainer>
                 }
             </Grid>
         
-            <Grid item sx={{}}> 
-                {props.totalBalls.reds>=1 && 
+            <Grid item> 
+                {props.props.totalBalls.reds>=1 && 
                 <DragDropContainer targetKey="foo" dragData={{points: 1, amount:15, type: "reds"}} >
                 <img  className="img" src={red} alt="img"></img>
                 </DragDropContainer>
                 }
             </Grid>
-            <Grid item  sx={{}}> 
-                {props.totalBalls.black &&
+            <Grid item > 
+                {props.props.totalBalls.black &&
                 <DragDropContainer targetKey="foo" dragData={{points: 7, amount:1, type: "colors", ball: "black"}} >
                 <img  className="img" src={black} alt="img"></img>
                 </DragDropContainer>

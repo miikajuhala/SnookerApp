@@ -98,7 +98,8 @@ export default function Foul(props) {
             {/* undo, restart, save game buttons */}
             <Grid item xs={3.3}  sx={{mb:1}}>
                 <Paper elevation={6}>
-                    <Button variant="overline"  sx={{textTransform: "none"}}>
+                    <Button variant="overline"  sx={{textTransform: "none"}} 
+                    onClick={()=>props.undoRecent()}>
                         Undo
                     </Button>
                 </Paper>
