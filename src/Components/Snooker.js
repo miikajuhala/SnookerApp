@@ -1,11 +1,11 @@
 
 import React from "react";
-import { Box, Paper, Grid, Typography} from "@mui/material";
+import { Box, Paper, Grid} from "@mui/material";
 import { DropTarget } from 'react-drag-drop-container';
 import SnookerTable from "./SnookerTable";
 import table2 from "./table2.png"
 import Foul from "./Foul";
-import { PhotoLibraryRounded, Score } from "@mui/icons-material";
+
 import Scores from "./Scores";
 
 
@@ -14,6 +14,7 @@ import Scores from "./Scores";
 
 export default function Snooker(props) {
 
+    // styles for  elements
     const styles = {
         paperContainer: {
             backgroundRepeat: 'no-repeat',
@@ -54,7 +55,7 @@ export default function Snooker(props) {
         if(e.dragData.type==="colors" && props.totalBalls.reds<=0){
            
                 //if recent ball was red and same player color ball stays
-                if(props.undo.recentBall==="reds" && props.undo.recentPlayer===player.name){
+                if(props.undo.recentBall==="reds" && props.undo.recentPlayer.name===player.name){
                 props.setundo({recentBall: e.dragData.ball, recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
                 }
                 else props.settotalBalls({...props.totalBalls, [e.dragData.ball]: false, colors: props.totalBalls.colors-1})
@@ -63,6 +64,7 @@ export default function Snooker(props) {
                 
                 setplayer({...player, points: player.points + e.dragData.points  })
             }
+        // if type foul, add points
         if(e.dragData.type==="foul"){
             props.setundo({recentBall: "foul", recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
             setplayer({...player, points: player.points + e.dragData.points  })

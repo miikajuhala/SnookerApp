@@ -24,7 +24,6 @@ function App() {
   const [msg, setMsg] =  React.useState('')
 
 
-
    //Snookers infromation stored here during game
    const [totalBalls, settotalBalls] = React.useState({reds: 2, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
    const [undo, setundo] = React.useState({recentBall:"", recentPlayer:null, recentPoints:0, setRecentPlayer: null})
@@ -36,7 +35,7 @@ function App() {
     setMsg("doesnt work just yet")
    }
 
-   // function that handles undo button
+   // function that handles undo button in snooker game
    const undoRecent = ()=>{
   
       // if recent ball was red => add one red and take reds points from player
@@ -64,7 +63,7 @@ function App() {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-
+//snackbar
   const action = (
     <React.Fragment>
       <IconButton
@@ -78,7 +77,7 @@ function App() {
     </React.Fragment>
 )
 
-  
+  // handles logout
   function Logout(){
     sessionStorage.clear("jwt")
     sessionStorage.clear("role")

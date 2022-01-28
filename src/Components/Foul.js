@@ -8,14 +8,7 @@ import white from "../assets/White50.png"
 
 export default function Foul(props) {
 
-    const theme ={
 
-          MuiButton: {
-            textTransform: "none"
-
-          }
-      };
-   
 
     return (
         
