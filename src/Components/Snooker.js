@@ -130,7 +130,7 @@ export default function Snooker(props) {
 
         {/* Some kind of settings / restart options are needed ez to access */}
         {/* Fouls */}
-        <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent}></Foul>
+        <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent} restartGame={props.restartGame} saveGame={props.saveGame}></Foul>
 
     </Box>
    

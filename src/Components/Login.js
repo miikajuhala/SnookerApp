@@ -6,7 +6,7 @@ import axios from 'axios';
 import Fab from '@mui/material/Fab';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import {Grid, Paper} from '@mui/material';
+import {Button, Grid, Paper} from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -123,13 +123,18 @@ const getToken = () => {
     if (jwtToken !== null) {
       sessionStorage.setItem("jwt", jwtToken)
       sessionStorage.setItem("username", jwt(jwtToken).sub)
+      //fetches users id
+      getId(user.username);
+
+      
       setUser({
         ...user,
         username: "",
         password: ""
       })
       props.setLogged(true);
-      console.log(sessionStorage.getItem("jwt"))
+      console.log(sessionStorage.getItem("username"))
+      console.log(jwtToken)
       setOpen(true)
       setMsg("Logged in succesfully!")
 
@@ -161,8 +166,26 @@ const getToken = () => {
         });
     
     }
-    
-    
+
+    const getId=(usr)=>{
+
+
+    axios.get(url+"api/getid", {
+      params: {
+        id:usr
+      }
+    })
+    .then(function (response) {
+      //kirjaa suoraan sisään kun rekisteröityy
+     console.log(response)
+      sessionStorage.setItem("userId",response)
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+}
 
  
 
@@ -184,6 +207,10 @@ return(
     margin: 10,
     border: "1px solid black"
 }}> U are logged in 
+<Button onClick={()=>{
+  props.setLogged(false) 
+  props.logout()}}>
+dsdsdsd</Button>
 </Paper>}
 
 {props.logged ===false && 

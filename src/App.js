@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import Menu from './Components/Menu';
 import {Routes, Route} from "react-router-dom";
+import axios from 'axios';
 import Login from './Components/Login';
 import Mainpage from './Components/Mainpage';
 import Snooker from './Components/Snooker';
@@ -11,6 +12,9 @@ import BottomNavigation1 from './Components/BottomNavigation1';
 import Settings from './Components/Settings';
 import { IconButton, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -30,10 +34,71 @@ function App() {
    const [player1, setPlayer1] = React.useState({id: 1, name: "player1", points: 0, fouls: 0})
    const [player2, setPlayer2] = React.useState({id: 2, name: "player2", points: 0, fouls: 0})
 
+   //rest consts
+   const baseURL = "http://localhost:8080"
+
+
+  // handles saving current game
+  //todo: need to find out way to get users id/users full address
+  //login pagella jwt.get id yms
+    const saveGame =()=>{
+    axios.post(baseURL+"/api/frames", {
+      "name": "gamw1234",
+      "player1": "miika",
+      "player2": "janne",
+      "player1Score": 147,
+      "player2Score": 23,
+      "reds": 13,
+      "black": true,
+      "pink": false,
+      "blue": false,
+      "green": true,
+      "brown": false,
+      "yellow": true,
+      "user":"http://localhost:8080/api/users/2"//tähän viel et hakee sessionstoragest
+      
+  }, {
+    headers: {
+      'Authorization': sessionStorage.getItem("jwt")
+    },
+  })
+    .then(function (response) {
+    
+      console.log(response);
+  })
+    .catch(function (error) {
+      console.log(error);
+  });
+  setMsg("You have succesfully reserved spot: ")
+  setOpen(true)
+
+}
+
+  //  function that handles full restart
    const restartGame = ()=>{
-    setOpen(true);
-    setMsg("doesnt work just yet")
-   }
+    confirmAlert({
+      title: 'Restart scores and table?',
+      message: "Scores will not be saved",
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => 
+          {
+            settotalBalls({reds: 2, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
+            setPlayer1({...player1, points: 0, fouls: 0})
+            setPlayer2({...player2, points: 0, fouls: 0})
+            setOpen(true)
+            setMsg("Restarted")
+            
+          }
+        },
+        {
+          label: 'No',
+          onClick: () => console.log("nope")
+        }
+      ]
+    });
+  }
 
    // function that handles undo button in snooker game
    const undoRecent = ()=>{
@@ -55,7 +120,9 @@ function App() {
           }
           undo.setRecentPlayer({...undo.recentPlayer, points: undo.recentPoints })
       }
-  
+      //inform user after undo
+      setOpen(true)
+      setMsg("Undo success")
    }
   
    // snackbar
@@ -90,8 +157,6 @@ function App() {
 
 
 
-
- 
   return (
 
   <>
@@ -102,7 +167,7 @@ function App() {
     <Routes>
         <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}  />}></Route>
         <Route path="/"  element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
-        <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg}/>}> </Route>
+        <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg} saveGame={saveGame}/> }> </Route>
         <Route path="/results"  element={<Results />}></Route>
         <Route path="/settings" element={<Settings />}></Route>
     </Routes>
