@@ -46,7 +46,7 @@ function App() {
       "name": "gamw1234",
       "player1": "miika",
       "player2": "janne",
-      "player1Score": 147,
+      "player1Score": 147, 
       "player2Score": 23,
       "reds": 13,
       "black": true,
