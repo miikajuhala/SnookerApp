@@ -21,20 +21,20 @@ import loginImg from './login.jpg'
 
 //Confiq for swiper
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props;
 
-    return (
-    <Typography
-        component="div"
-        role="tabpanel"
-        hidden={value !== index}
-        id={`action-tabpanel-${index}`}
-        aria-labelledby={`action-tab-${index}`}
-        {...other}
-    >
-        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </Typography>
-    );
+return (
+  <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`action-tabpanel-${index}`}
+      aria-labelledby={`action-tab-${index}`}
+      {...other}
+  >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+  </Typography>
+  );
 }
   //Confiq for swiper
   TabPanel.propTypes = {
@@ -43,12 +43,12 @@ function TabPanel(props) {
     value: PropTypes.number.isRequired,
   };
   //Confiq for swiper
-    function a11yProps(index) {
-        return {
-        id: `action-tab-${index}`,
-        'aria-controls': `action-tabpanel-${index}`,
-        };
-    }
+  function a11yProps(index) {
+    return {
+    id: `action-tab-${index}`,
+    'aria-controls': `action-tabpanel-${index}`,
+    };
+  }
   //Confiq for swiper
   const fabStyle = {
     position: 'absolute',
@@ -60,48 +60,46 @@ function TabPanel(props) {
 
 export default function Login(props) {
 
-    const url = "http://localhost:8080/"
-    const [open, setOpen] = React.useState(false)
-    const [msg, setMsg] = React.useState('')
-    const [user, setUser] = React.useState({username: "", password:""});
+  const url = "http://localhost:8080/"
+  const [user, setUser] = React.useState({username: "", password:""});
 
 
-    const theme = useTheme();
-    const [value, setValue] = React.useState(0);
-  
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  const theme = useTheme();
+  const [value, setValue] = React.useState(0);
 
-    const handleChange1 = (event)=>{
-        setUser({...user, [event.target.name]: event.target.value});
-    };
-  
-    const handleChangeIndex = (index) => {
-      setValue(index);
-    };
-  
-    // Configurations for swiper element
-    const transitionDuration = {
-      enter: theme.transitions.duration.enteringScreen,
-      exit: theme.transitions.duration.leavingScreen,
-    };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-    // Configurations for swiper element
-    const fabs = [
-      {
-        color: 'secondary',
-        sx: fabStyle,
-        icon: <LoginIcon onClick={()=>getToken()} />,
-        label: 'Add',
-      },
-      {
-        color: 'primary',
-        sx: fabStyle,
-        icon: <LoginIcon onClick={()=>createNewUser()}/>,
-        label: 'Edit',
-      },
-    ]
+  const handleChange1 = (event)=>{
+      setUser({...user, [event.target.name]: event.target.value});
+  };
+
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
+
+  // Configurations for swiper element
+  const transitionDuration = {
+    enter: theme.transitions.duration.enteringScreen,
+    exit: theme.transitions.duration.leavingScreen,
+  };
+
+  // Configurations for swiper element
+  const fabs = [
+    {
+      color: 'secondary',
+      sx: fabStyle,
+      icon: <LoginIcon onClick={()=>getToken()} />,
+      label: 'Add',
+    },
+    {
+      color: 'primary',
+      sx: fabStyle,
+      icon: <LoginIcon onClick={()=>createNewUser()}/>,
+      label: 'Edit',
+    },
+  ]
 
 
 
@@ -112,78 +110,75 @@ export default function Login(props) {
 //Login and jwt save
 const getToken = () => {
 
-    axios.post(url+"login", {
-        username:user.username, password:user.password
-      })
-    .then((response) => {
-    console.log(response);
-      
-    const jwtToken = response.headers.authorization
-
-    if (jwtToken !== null) {
-      sessionStorage.setItem("jwt", jwtToken)
-      sessionStorage.setItem("username", jwt(jwtToken).sub)
-      //fetches users id
-      getId(user.username);
-
-      
-      setUser({
-        ...user,
-        username: "",
-        password: ""
-      })
-      props.setLogged(true);
-      console.log(sessionStorage.getItem("username"))
-      console.log(jwtToken)
-      setOpen(true)
-      setMsg("Logged in succesfully!")
-
-    }
-    }, (error) => {
-      console.log(error)
-      setMsg(error + "error")
-      setOpen(true)
-    });
+  axios.post(url+"login", {
+      username:user.username, password:user.password
+    })
+  .then((response) => {
+  console.log(response);
     
-    }
+const jwtToken = response.headers.authorization
+
+  if (jwtToken !== null) {
+    sessionStorage.setItem("jwt", jwtToken)
+    sessionStorage.setItem("username", jwt(jwtToken).sub)
+    //fetches users id
+    getId(user.username);
+
+    
+    setUser({
+      ...user,
+      username: "",
+      password: ""
+    })
+    props.setLogged(true);
+    console.log(sessionStorage.getItem("username"))
+    console.log(jwtToken)
+    props.setOpen(true)
+    props.setMsg("Logged in succesfully!")
+
+  }
+  }, (error) => {
+    console.log(error)
+    props.setMsg(error + "error")
+    props.setOpen(true)
+  });
+  
+  }
 
     //New user register and auto-login right after
-    function createNewUser() {
+const createNewUser =()=> {
 
-      axios.post(url + "api/register", {
-          username: user.username,
-          passwordHash: user.password,
-          role: "USER"
-        })
-        .then(function (response) {
-          //kirjaa suoraan sisään kun rekisteröityy
-          getToken();
-
-
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    
-    }
-
-    const getId=(usr)=>{
-
-
-    axios.get(url+"api/getid", {
-      params: {
-        id:usr
-      }
-    })
+  axios.post(url + "api/register", {
+      username: user.username,
+      password: user.password,
+      role: "user"
+  })
     .then(function (response) {
-      //kirjaa suoraan sisään kun rekisteröityy
-     console.log(response)
-      sessionStorage.setItem("userId",response)
-
+    //kirjaa suoraan sisään kun rekisteröityy
+    getToken();
     })
     .catch(function (error) {
       console.log(error);
     });
+
+}
+
+const getId=(usr)=>{
+
+axios.get(url+"api/getid", {
+  params: {
+    id:usr
+  }
+})
+.then(function (response) {
+  //kirjaa suoraan sisään kun rekisteröityy
+  console.log(response)
+  sessionStorage.setItem("userId",response)
+
+})
+.catch(function (error) {
+  console.log(error);
+});
 
 }
 
@@ -193,29 +188,25 @@ const getToken = () => {
 
 return( 
     
-
-    
-
-
-    <main> 
+<main> 
 
 {/* Paper that shows if user already logged in */}
 {props.logged===true && 
-<Paper style=
-{{
+<Paper style={{
     padding: 40,
     margin: 10,
     border: "1px solid black"
-}}> U are logged in 
-<Button onClick={()=>{
-  props.setLogged(false) 
-  props.logout()}}>
-dsdsdsd</Button>
+}}>You are logged in!
+  <Button onClick={()=>{
+    props.setLogged(false) 
+    props.logout()}}>
+    dsdsdsd
+  </Button>
 </Paper>}
 
 {props.logged ===false && 
 <div className="image-container">
-    <img src={loginImg} width="300" style={{position: 'relative'}} alt="logo" />
+    <img src={loginImg} width="300"  style={{position: 'relative'}} alt="logo" />
 </div>   
 }
    
@@ -228,76 +219,63 @@ dsdsdsd</Button>
 >
 
     {props.logged ===false && 
-    <Box sx={{
-            bgcolor: 'background.paper',
-            maxwidth: 500,
-            position: 'relative',
-            minHeight: 200,
-             }}>
+<Box sx={{
+bgcolor: 'background.paper',
+maxwidth: 500,
+position: 'relative',
+minHeight: 200,
+  }}>
 
-                    <AppBar position="static" color="default">
-                        <Tabs
-                            value={value}
-                            onChange={handleChange}
-                            indicatorColor="primary"
-                            textColor="primary"
-                            variant="fullWidth"
-                            aria-label="action tabs example"
-                            >
-                                <Tab label="Login" {...a11yProps(0)} />
-                                <Tab label="Sign Up" {...a11yProps(1)} />
-                        </Tabs>
-                    </AppBar>
+    <AppBar position="static" color="default">
+        <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="action tabs example"
+            >
+                <Tab label="Login" {...a11yProps(0)} />
+                <Tab label="Sign Up" {...a11yProps(1)} />
+        </Tabs>
+    </AppBar>
 
-                <SwipeableViews
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={value}
-                    onChangeIndex={handleChangeIndex}
-                    >
-                        <TabPanel value={value} index={0} dir={theme.direction}>
-                        <div> Login </div>
-                            <TextField id="outlined-basic" name ="username" label="username" variant="outlined" onChange={handleChange1}/>
-                            <TextField id="filled-basic" name ="password" type="password" label="password" variant="filled" onChange={handleChange1} />
-                        </TabPanel>
+    <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+        >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+        <div> Login </div>
+            <TextField id="outlined-basic" name ="username" label="username" variant="outlined" onChange={handleChange1}/>
+            <TextField id="filled-basic" name ="password" type="password" label="password" variant="filled" onChange={handleChange1} />
+        </TabPanel>
 
-                        <TabPanel value={value} index={1} dir={theme.direction}>
-                        <div> Sign Up </div>
-                            <TextField id="outlined-basic" name ="username" label="username" variant="outlined" onChange={handleChange1}/>
-                            <TextField id="filled-basic" name ="password" type="password" label="password" variant="filled" onChange={handleChange1} />
-                        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+        <div> Sign Up </div>
+            <TextField id="outlined-basic" name ="username" label="username" variant="outlined" onChange={handleChange1}/>
+            <TextField id="filled-basic" name ="password" type="password" label="password" variant="filled" onChange={handleChange1} />
+        </TabPanel>
 
-                </SwipeableViews>
+    </SwipeableViews>
 
-                {fabs.map((fab, index) => (
-                    
-                <Zoom
-                    key={fab.color} in={value === index}
-                    timeout={transitionDuration}
-                    unmountOnExit
-                    style={{transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,}} 
-                >
+    {fabs.map((fab, index) => (  
+    <Zoom
+        key={fab.color} in={value === index}
+        timeout={transitionDuration}
+        unmountOnExit
+        style={{transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,}} 
+        >
+        <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
+            {fab.icon}
+        </Fab>
+    </Zoom>
+    ))}
+    
+</Box>}
 
-                    <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
-                        {fab.icon}
-                    </Fab>
-                </Zoom>
-        ))}
-        
-    </Box>
-        }
 </Grid> 
-
-<Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={()=>setOpen(false)}
-        message={msg}
-        // action={()=>setOpen(false)}
-        alignItems="center"
-        justifyContent="center"
-        color="secondary"
-      />
-      </main> 
+</main> 
 )
 }
 

@@ -18,7 +18,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-
+//TODO: for future native implementation, jwt and id must be passed from native login to the browser element so login stays
 function App() {
 
   // App.js controls apps all logged checks.
@@ -36,10 +36,10 @@ function App() {
 
    //rest consts
    const baseURL = "http://localhost:8080"
+   const id = sessionStorage.getItem("userId");
 
 
   // handles saving current game
-  //todo: need to find out way to get users id/users full address
   //login pagella jwt.get id yms
     const saveGame =()=>{
     axios.post(baseURL+"/api/frames", {
@@ -55,7 +55,7 @@ function App() {
       "green": true,
       "brown": false,
       "yellow": true,
-      "user":"http://localhost:8080/api/users/2"//tähän viel et hakee sessionstoragest
+      "user":"http://localhost:8080/api/users/"+id 
       
   }, {
     headers: {
@@ -165,7 +165,7 @@ function App() {
 
     {/* <Body with all functionalities */}
     <Routes>
-        <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}  />}></Route>
+        <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
         <Route path="/"  element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
         <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg} saveGame={saveGame}/> }> </Route>
         <Route path="/results"  element={<Results />}></Route>
