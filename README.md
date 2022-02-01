@@ -1,3 +1,13 @@
+# Still under developement
+# For mobile use!
+# Snooker score calculator app
+- Snooker game score calculations
+- Undo, restart and save game
+- Mix of native app and in-app browser
+- Continue saved game later
+
+-----------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
