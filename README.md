@@ -1,10 +1,11 @@
-# Still under developement
+# Still under current developement
 # For mobile use!
-# Snooker score calculator app
+# Snooker app
 - Snooker game score calculations
 - Undo, restart and save game
 - Mix of native app and in-app browser
 - Continue saved game later
+- Java spring server 
 
 -----------------------------------------------------
 
