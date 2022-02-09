@@ -42,36 +42,43 @@ function App() {
   // handles saving current game
   //login pagella jwt.get id yms
     const saveGame =()=>{
-    axios.post(baseURL+"/api/frames", {
-      "name": "gamw1234",
-      "player1": "miika",
-      "player2": "janne",
-      "player1Score": 147, 
-      "player2Score": 23,
-      "reds": 13,
-      "black": true,
-      "pink": false,
-      "blue": false,
-      "green": true,
-      "brown": false,
-      "yellow": true,
-      "user":"http://localhost:8080/api/users/"+id 
-      
-  }, {
-    headers: {
-      'Authorization': sessionStorage.getItem("jwt")
-    },
-  })
-    .then(function (response) {
-    
-      console.log(response);
-  })
-    .catch(function (error) {
-      console.log(error);
-  });
-  setMsg("You have succesfully reserved spot: ")
-  setOpen(true)
-
+    if(sessionStorage.getItem("jwt")===null){
+      setOpen(true)
+      setMsg("You must be logged in to save game")
+    }
+    else{
+      axios.post(baseURL+"/api/frames", {
+        "name": "Snooker",
+        "player1": player1.name,
+        "player2": player2.name,
+        "player1Score": player1.points, 
+        "player2Score": player2.points,
+        "reds": totalBalls.reds,
+        "black": totalBalls.black,
+        "pink": totalBalls.pink,
+        "blue": totalBalls.blue,
+        "green": totalBalls.green,
+        "brown": totalBalls.brown,
+        "yellow": totalBalls.yellow,
+        "user":"http://localhost:8080/api/users/"+id 
+        
+    }, {
+      headers: {
+        'Authorization': sessionStorage.getItem("jwt")
+      },
+    })
+      .then(function (response) {
+        if(response.status==="200"){
+          setOpen(true);
+          setMsg("Save successfull")
+          
+        }
+        console.log(response);
+    })
+      .catch(function (error) {
+        console.log(error);
+    });
+  }
 }
 
   //  function that handles full restart
