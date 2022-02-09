@@ -34,7 +34,7 @@ return (
   >
       {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
   </Typography>
-  );
+);
 }
   //Confiq for swiper
   TabPanel.propTypes = {
@@ -108,41 +108,40 @@ export default function Login(props) {
 
 
 //Login and jwt save
-const getToken = () => {
-
-  axios.post(url+"login", {
-      username:user.username, password:user.password
+  const getToken = () => {
+    axios.post(url+"login", {
+        username:user.username, password:user.password
     })
-  .then((response) => {
-  console.log(response);
+    .then((response) => {
+    console.log(response);
+      
+  const jwtToken = response.headers.authorization
+
+    if (jwtToken !== null) {
+      sessionStorage.setItem("jwt", jwtToken)
+      sessionStorage.setItem("username", jwt(jwtToken).sub)
+      //fetches users id
+      getId(user.username);
+
+      
+      setUser({
+        ...user,
+        username: "",
+        password: ""
+      })
+      props.setLogged(true);
+      console.log(sessionStorage.getItem("username"))
+      console.log(jwtToken)
+      props.setOpen(true)
+      props.setMsg("Logged in succesfully!")
+
+    }
+    }, (error) => {
+      console.log(error)
+      props.setMsg(error + "error")
+      props.setOpen(true)
+    });
     
-const jwtToken = response.headers.authorization
-
-  if (jwtToken !== null) {
-    sessionStorage.setItem("jwt", jwtToken)
-    sessionStorage.setItem("username", jwt(jwtToken).sub)
-    //fetches users id
-    getId(user.username);
-
-    
-    setUser({
-      ...user,
-      username: "",
-      password: ""
-    })
-    props.setLogged(true);
-    console.log(sessionStorage.getItem("username"))
-    console.log(jwtToken)
-    props.setOpen(true)
-    props.setMsg("Logged in succesfully!")
-
-  }
-  }, (error) => {
-    console.log(error)
-    props.setMsg(error + "error")
-    props.setOpen(true)
-  });
-  
   }
 
     //New user register and auto-login right after
@@ -173,7 +172,7 @@ axios.get(url+"api/getid", {
 .then(function (response) {
   //kirjaa suoraan sisään kun rekisteröityy
   console.log(response)
-  sessionStorage.setItem("userId",response)
+  sessionStorage.setItem("userId",response.data)
 
 })
 .catch(function (error) {

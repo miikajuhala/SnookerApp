@@ -14,6 +14,8 @@ import Scores from "./Scores";
 
 export default function Snooker(props) {
 
+    
+
     // styles for  elements
     const styles = {
         paperContainer: {
@@ -54,27 +56,28 @@ export default function Snooker(props) {
         //if type colors, and 0 reds on table, add score and take out the color ball
         if(e.dragData.type==="colors" && props.totalBalls.reds<=0){
            
-                //if recent ball was red and same player color ball stays
-                if(props.undo.recentBall==="reds" && props.undo.recentPlayer.name===player.name){
-                props.setundo({recentBall: e.dragData.ball, recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
-                }
-                else props.settotalBalls({...props.totalBalls, [e.dragData.ball]: false, colors: props.totalBalls.colors-1})
-                
-                props.setundo({recentBall: e.dragData.ball, recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
-                
-                setplayer({...player, points: player.points + e.dragData.points  })
+            //if recent ball was red and same player color ball stays
+            if(props.undo.recentBall==="reds" && props.undo.recentPlayer.name===player.name){
+            props.setundo({recentBall: e.dragData.ball, recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
             }
+            else props.settotalBalls({...props.totalBalls, [e.dragData.ball]: false, colors: props.totalBalls.colors-1})
+            
+            props.setundo({recentBall: e.dragData.ball, recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
+            
+            setplayer({...player, points: player.points + e.dragData.points  })
+        }
         // if type foul, add points
         if(e.dragData.type==="foul"){
             props.setundo({recentBall: "foul", recentPlayer: player, recentPoints: player.points, setRecentPlayer: setplayer})
             setplayer({...player, points: player.points + e.dragData.points  })
-            
+                
         }
 
-            props.setOpen(false);
-            props.setOpen(true)
-            props.setMsg(e.dragData.points+" points added to "+player.name)
-            console.log(props.totalBalls.reds)
+    props.setOpen(false);
+    props.setOpen(true)
+    props.setMsg(e.dragData.points+" points added to "+player.name)
+    console.log(props.totalBalls.reds)
+    console.log(props.player2.points)
         
     }
 
@@ -130,7 +133,7 @@ export default function Snooker(props) {
 
         {/* Some kind of settings / restart options are needed ez to access */}
         {/* Fouls */}
-        <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent} restartGame={props.restartGame} saveGame={props.saveGame}></Foul>
+        <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent} restartGame={props.restartGame} saveGame={props.saveGame} props={props}></Foul>
 
     </Box>
    
