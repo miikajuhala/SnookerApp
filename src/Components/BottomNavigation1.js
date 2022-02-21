@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ArrowBack, Home,  Settings } from '@mui/icons-material';
+import { ArrowBack, ArrowForward, Home,  Settings } from '@mui/icons-material';
 
 
 
@@ -26,6 +26,10 @@ export default function BottomNavigation1() {
             navigate(-1)
             setValue(newValue)
             }
+          if (newValue==="forward"){
+          navigate(+1)
+          setValue(newValue)
+          }
           else{
             setValue(newValue)
             navigate(newValue);
@@ -34,7 +38,7 @@ export default function BottomNavigation1() {
       >
         <BottomNavigationAction label="" value={"back"} icon={<ArrowBack className="backround"/>} />
         <BottomNavigationAction label="Start" value={"/"} icon={<Home />} />
-        <BottomNavigationAction label="Settings" value={"/settings"} icon={<Settings />} />
+        <BottomNavigationAction label="" value={"forward"} icon={<ArrowForward />} /> 
       </BottomNavigation>
     </Box>
   );

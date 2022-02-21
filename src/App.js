@@ -19,6 +19,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import CloseIcon from '@mui/icons-material/Close';
 
 //TODO: for future native implementation, jwt and id must be passed from native login to the browser element so login stays
+//Maybe login with appleid or google and use that id to create account automatically -> get id make new user -> save the id in local memory 
 function App() {
 
   // App.js controls apps all logged checks.
@@ -61,19 +62,15 @@ function App() {
         "brown": totalBalls.brown,
         "yellow": totalBalls.yellow,
         "user":"http://localhost:8080/api/users/"+id 
-        
-    }, {
-      headers: {
-        'Authorization': sessionStorage.getItem("jwt")
-      },
+      }, {
+        headers: {
+          'Authorization': sessionStorage.getItem("jwt")
+        },
     })
-      .then(function (response) {
-        if(response.status==="200"){
-          setOpen(true);
-          setMsg("Save successfull")
-          
-        }
-        console.log(response);
+      .then(function () {
+        setOpen(true);
+        setMsg("Save successfull")
+      
     })
       .catch(function (error) {
         console.log(error);
@@ -132,12 +129,12 @@ function App() {
       setMsg("Undo success")
    }
   
-   // snackbar
+  // snackbar
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-//snackbar
+  //snackbar
   const action = (
     <React.Fragment>
       <IconButton
@@ -179,7 +176,7 @@ function App() {
         <Route path="/settings" element={<Settings />}></Route>
     </Routes>
     {/* //Navigation bar */}
-     {/* <BottomNavigation1 ></BottomNavigation1>  */}
+      <BottomNavigation1 ></BottomNavigation1>  
 
      <Snackbar
         lenght={13}

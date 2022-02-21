@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, Paper } from "@mui/material";
 import axios from "axios";
 
@@ -10,7 +10,6 @@ import axios from "axios";
 export default function Results() {
 
     const [frames, setFrames] = React.useState([]);
-    const [result, setResults] = React.useState({player1:null, player2: null, player1Score:0, player2Score:0})
 
 
     const url = "http://localhost:8080/"
