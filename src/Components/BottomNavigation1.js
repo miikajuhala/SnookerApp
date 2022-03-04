@@ -1,45 +1,55 @@
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { ArrowBack, ArrowForward, Home,  Settings } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { Nav, NavItem } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavLink } from 'react-router-dom';
+
+const tabs = [{
+  route: "/",
+  icon: faHome,
+  label: "Home"
+},{
+  route: "/snooker",
+  icon: faSearch,
+  label: "Snooker"
+},{
+  route: "/results",
+  icon: faUserCircle,
+  label: "Results"
+  
+}]
 
 
 
 export default function BottomNavigation1() {
  
-  let navigate = useNavigate();
-  const location = useLocation();
-  
-  const [value, setValue] = React.useState("/");
-  
   
   return (
-    <Box  sx={{ width: 1 }}>
-      <BottomNavigation className="backround"
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          if (newValue==="back"){
-            navigate(-1)
-            setValue(newValue)
-            }
-          if (newValue==="forward"){
-          navigate(+1)
-          setValue(newValue)
+    <div>
+  
+   
+    {/* Bottom Tab Navigator*/}
+    <nav className="navbar fixed-bottom navbar-light" role="navigation">
+      <Nav className="w-100">
+        <div className=" d-flex flex-row justify-content-around w-100">
+          {
+            tabs.map((tab, index) =>(
+              <NavItem key={`tab-${index}`}>
+                <NavLink to={tab.route} className="nav-link" activeClassName="active">
+                  <div className="row d-flex flex-column justify-content-center align-items-center">
+                    <FontAwesomeIcon size="lg" icon={tab.icon}/>
+                    <div>{tab.label}</div>
+                  </div>
+                </NavLink>
+              </NavItem>
+            ))
           }
-          else{
-            setValue(newValue)
-            navigate(newValue);
-          }
-        }}
-      >
-        <BottomNavigationAction label="" value={"back"} icon={<ArrowBack className="backround"/>} />
-        <BottomNavigationAction label="Start" value={"/"} icon={<Home />} />
-        <BottomNavigationAction label="" value={"forward"} icon={<ArrowForward />} /> 
-      </BottomNavigation>
-    </Box>
+        </div>
+      </Nav>
+    </nav>
+  </div>
+
   );
 }

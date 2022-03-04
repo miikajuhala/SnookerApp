@@ -81,6 +81,7 @@ function App() {
   //  function that handles full restart
    const restartGame = ()=>{
     confirmAlert({
+      lenght: '50px',
       title: 'Restart scores and table?',
       message: "Scores will not be saved",
       buttons: [
