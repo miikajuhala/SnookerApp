@@ -10,13 +10,12 @@ import Snooker from './Components/Snooker';
 import Results from './Components/Results';
 import BottomNavigation1 from './Components/BottomNavigation1';
 import Settings from './Components/Settings';
-import { IconButton, Snackbar } from '@mui/material';
+import { Container, IconButton, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
-
-
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import CloseIcon from '@mui/icons-material/Close';
+// import * as all from 'react-paper-css';
 
 //TODO: for future native implementation, jwt and id must be passed from native login to the browser element so login stays
 //Maybe login with appleid or google and use that id to create account automatically -> get id make new user -> save the id in local memory 
@@ -36,7 +35,6 @@ function App() {
    const [player2, setPlayer2] = React.useState({id: 2, name: "player2", points: 0, fouls: 0})
 
    //rest consts
-   const baseURL = "http://localhost:8080"
    const id = sessionStorage.getItem("userId");
 
 
@@ -48,7 +46,7 @@ function App() {
       setMsg("You must be logged in to save game")
     }
     else{
-      axios.post(baseURL+"/api/frames", {
+      axios.post("https://snookerserver.herokuapp.com/api/frames", {
         "name": "Snooker",
         "player1": player1.name,
         "player2": player2.name,
@@ -165,19 +163,19 @@ function App() {
   return (
 
   <>
-     {/* <Menubar with login/register */}
-     {/* <Menu logout={Logout} logged={logged} setLogged={setLogged}></Menu> */}
-
+  
     {/* <Body with all functionalities */}
     <Routes>
         <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
-        <Route path="/"  element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
+        <Route path="/" element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
         <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg} saveGame={saveGame}/> }> </Route>
         <Route path="/results"  element={<Results />}></Route>
         <Route path="/settings" element={<Settings />}></Route>
     </Routes>
+
+
     {/* //Navigation bar */}
-      <BottomNavigation1 ></BottomNavigation1>  
+     <BottomNavigation1></BottomNavigation1>  
 
      <Snackbar
         lenght={13}
@@ -188,7 +186,7 @@ function App() {
         message={<Alert severity="success">{msg}</Alert>}
         action={action}
       />
-
+   
   </>
     
 

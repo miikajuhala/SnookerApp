@@ -7,6 +7,7 @@ import table2 from "./table2.png"
 import Foul from "./Foul";
 
 import Scores from "./Scores";
+import { Container } from "reactstrap";
 
 
 
@@ -85,22 +86,18 @@ export default function Snooker(props) {
 
     return (
     <>
-
-  
-      
-    <Box className="backround" sx={{ height: "100%", width: '100%', minWidth:364}} >
+    <Container className="backround" sx={{ height: "100%", width: '100%', minWidth:364}} >
             
-            {/* Scores */}
+        {/* Scores */}
         <Scores props={props}></Scores>
 
         
         {/* snooker table, with draggable snookerballs */}
-        <Grid container >
-         
-
+        <Grid container>
+        
             {/* player 1 target */}
             <Grid  item xs={1.33} sm={3.15} xl={4.5} sx={styles.targetContainer}> 
-                <Paper  elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
+                <Paper class="sivupaneeli" elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
                     <DropTarget 
                         targetKey="foo" 
                         onHit={(e)=>handleHit(e, props.player1, props.setPlayer1)}>
@@ -117,7 +114,7 @@ export default function Snooker(props) {
             
             {/* player 2 target */}
             <Grid item xs={1.33} sm={3.15} xl={4.5} sx={styles.targetContainer}>
-                <Paper elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
+                <Paper class="sivupaneeli" elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
                     <DropTarget 
                         targetKey="foo" 
                         onHit={(e)=>{handleHit(e, props.player2, props.setPlayer2)}}>
@@ -135,7 +132,7 @@ export default function Snooker(props) {
         {/* Fouls */}
         <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent} restartGame={props.restartGame} saveGame={props.saveGame} props={props}></Foul>
 
-    </Box>
+    </Container>
    
     </>
     )

@@ -31,7 +31,7 @@ export default function Foul(props) {
         
     <>
         {/* Scores and additional information gridbox */}
-        <Grid 
+    <Grid 
         container
         direction={"row"}
         justifyContent={"center"}
@@ -42,10 +42,10 @@ export default function Foul(props) {
             height: '5%',
             width: '100%',
             fontWeight: 'medium',
-        }}>
+    }}>
 
             {/* Fouls */}
-            <Grid item xs={12} mb={1}>
+            <Grid item xs={12}>
                 Fouls
             </Grid>
             
@@ -99,29 +99,33 @@ export default function Foul(props) {
 
             {/* undo, restart, save game buttons */}
             <Grid item xs={3}  sx={{mb:1}}>
-                <Paper elevation={6}>
-                    <Button variant="overline"  sx={{textTransform: "none"}} 
+                {/* <Paper elevation={6}> */}
+                    {/* <Button variant="overline"  sx={{textTransform: "none"}} 
                     onClick={()=>props.undoRecent()}>
                         Undo
-                    </Button>
-                </Paper>
+                    </Button> */}
+                    <input onClick={()=>props.undoRecent()} type="button" class="paper-btn-fouls" value="Undo"/>
+                {/* </Paper> */}
             </Grid>
             <Grid item xs={3} marginLeft={1.5} marginRight={1.5}  sx={{mb:1}}>
-                <Paper elevation={6} >
-                    <Button variant="overline"  sx={{textTransform: "none"}} onClick={props.restartGame}>
-                        Restart
-                    </Button>
-                </Paper>
+                {/* <Paper elevation={6} > */}
+                    {/* <Button variant="overline"  sx={{textTransform: "none"}} onClick={props.restartGame}>
+                        Restart 
+                    </Button> */}
+                    <input onClick={()=>props.restartGame()} type="button" class="paper-btn-fouls" value="Restart"/>
+                {/* </Paper> */}
             </Grid>
             <Grid item xs={3.4}  sx={{mb:1}}>
-                <Paper elevation={6}>
-                    <Button variant="overline" sx={{textTransform: "none"}} onClick={handleOpen} >
+                {/* <Paper elevation={6}> */}
+                    {/* <Button variant="overline" sx={{textTransform: "none"}} onClick={handleOpen} >
                         Save Game
-                    </Button>
-                </Paper>
+                    </Button> */}
+                    <input onClick={()=>handleOpen()} type="button" class="paper-btn-fouls" value="Save Game"/>
+                {/* </Paper> */}
             </Grid>
 
         </Grid>
+
         {/* Popup for saving game */}
         <Modal
         open={open}
@@ -140,12 +144,16 @@ export default function Foul(props) {
                 onChange={(event)=> props.props.setPlayer2({...props.props.player2, [event.target.name]: event.target.value})}/>
 
                 <Box alignContent="right">
-                    <Button  onClick={()=>{
+
+                    <input type="button" value="Save" class="paper-btn-fouls" 
+                    onClick={()=>{
                         props.saveGame()
                         handleClose()}
-                        }>Save   
-                    </Button>
-                    <Button onClick={handleClose}>Cancel</Button>
+                    }/> 
+                    
+                    <input onClick={handleClose} type="button" class="paper-btn-fouls" value="Close"/>
+                    
+                    
                 </Box>  
             </Box>
 

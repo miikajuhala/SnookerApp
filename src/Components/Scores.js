@@ -42,14 +42,14 @@ export default function Scores(props) {
                     
 
                     <Grid item xs={4.5} m={0.2} mr={1}>
-                        <Paper elevation={6}>
+                        <Paper elevation={6} sx={{maxHeight:39}}>
                             <Typography variant="overline" display="block" gutterBottom>
                             {props.props.player1.name} : {props.props.player1.points}
                             </Typography>
                         </Paper>
                     </Grid>
 
-                    <Grid item xs={4.5} m={0.2} ml={1}>
+                    <Grid item xs={4.5} m={0.2} ml={1} sx={{maxHeight:39}}> 
                         <Paper elevation={6}>
                             <Typography variant="overline" display="block" gutterBottom>
                             {props.props.player2.name} : {props.props.player2.points +" "}

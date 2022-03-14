@@ -109,7 +109,7 @@ export default function Login(props) {
 
 //Login and jwt save
   const getToken = () => {
-    axios.post(url+"login", {
+    axios.post("https://snookerserver.herokuapp.com/login", {
         username:user.username, password:user.password
     })
     .then((response) => {
@@ -147,7 +147,7 @@ export default function Login(props) {
     //New user register and auto-login right after
 const createNewUser =()=> {
 
-  axios.post(url + "api/register", {
+  axios.post("https://snookerserver.herokuapp.com/api/register", {
       username: user.username,
       password: user.password,
       role: "user"
@@ -164,7 +164,7 @@ const createNewUser =()=> {
 
 const getId=(usr)=>{
 
-axios.get(url+"api/getid", {
+axios.get("https://snookerserver.herokuapp.com/api/getid", {
   params: {
     id:usr
   }
