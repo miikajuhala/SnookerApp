@@ -163,8 +163,8 @@ function App() {
   return (
 
   <>
-  <Container fixed class="bg1"> 
-  <Grid
+  <Container class="bg"> 
+  <Grid 
   direction="column"
   justifyContent="center"
   alignItems="center">
@@ -196,7 +196,7 @@ function App() {
         action={action}
       />
 
-</Container>
+ </Container>
   </>
     
 

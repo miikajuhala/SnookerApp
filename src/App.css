@@ -121,14 +121,13 @@ html.dark {
   background-color: #f8f0e2;
 }
 .bg1 {
-  background-color: #f8f0e2;
-  padding-top: 2%; 
-  padding-bottom: 2%;
   margin: 0;
+  padding: 0;
   min-height: 500px;
+  
 }
 .bg3 {
-  background-color: rgb(97, 10, 10);
+  background-color: #9b6508;
 }
 .navbar {
   border-bottom: solid 1px #EBEBEB;

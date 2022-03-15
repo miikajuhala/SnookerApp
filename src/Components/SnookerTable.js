@@ -29,7 +29,7 @@ export default function SnookerTable(props) {
              mt={16}
         >
         
-            <Grid item  sx={{}}>  
+            <Grid item>  
                 {props.props.totalBalls.yellow &&
                 <DragDropContainer targetKey="foo" dragData={{points: 2, amount:1, type: "colors", ball: "yellow"}} >
                 <img className="img"  src={yellow}alt="yellow"></img>
