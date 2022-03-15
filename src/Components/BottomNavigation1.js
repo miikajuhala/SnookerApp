@@ -5,7 +5,8 @@ import { faSearch, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icon
 import { Nav, NavItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import { Container } from '@mui/material';
+
+
 
 const tabs = [{
   route: "/",
@@ -38,7 +39,7 @@ export default function BottomNavigation1() {
                 <NavItem key={`tab-${index}`}>
                   <NavLink to={tab.route} className="nav-link bottom-nav-link" activeClassName="active">
                     <div className="row d-flex flex-column justify-content-center align-items-center">
-                      <FontAwesomeIcon size="lg" icon={tab.icon}/>
+                      <FontAwesomeIcon size="sm" icon={tab.icon}/>
                       <div className="bottom-tab-label">{tab.label}</div>
                     </div>
                   </NavLink>

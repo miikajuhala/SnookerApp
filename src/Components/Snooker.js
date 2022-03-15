@@ -85,7 +85,7 @@ export default function Snooker(props) {
 
     return (
     <>
-    <Container className="backround" sx={{ height: "100%", width: '100%', minWidth:364}} >
+    <Box className="backround" sx={{ height: "100%", width: '100%', minWidth:364}} >
             
         {/* Scores */}
         <Scores props={props}></Scores>
@@ -131,7 +131,7 @@ export default function Snooker(props) {
         {/* Fouls */}
         <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent} restartGame={props.restartGame} saveGame={props.saveGame} props={props}></Foul>
 
-    </Container>
+    </Box>
    
     </>
     )

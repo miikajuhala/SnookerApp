@@ -18,7 +18,7 @@ export default function SnookerTable(props) {
     return (
         
     <>
-    <Box sx={{ height: "100%", width: '100%'}} >
+    <Box sx={{ height: "100%", width: '100%'}}>
 
         {/* container for yellow, brown and green */}
         <Grid 
@@ -26,7 +26,7 @@ export default function SnookerTable(props) {
             direction={"row"}
             justifyContent={"center"}
             alignItems={"center"}
-             mt={15}
+             mt={16}
         >
         
             <Grid item  sx={{}}>  
@@ -60,14 +60,14 @@ export default function SnookerTable(props) {
         direction="column"
         alignItems={"center"}
         >
-            <Grid item  sx={{mt:11.5}}> 
+            <Grid item  sx={{mt:10.5}}> 
                 {props.props.totalBalls.blue &&
                 <DragDropContainer targetKey="foo" dragData={{points: 5, amount:1, type: "colors", ball: "blue"}} >
                 <img className="img"  src={blue} alt="img"></img>
                 </DragDropContainer>
                 }
             </Grid>
-            <Grid item  sx={{mt:10}}> 
+            <Grid item  sx={{mt:8}}> 
                 {props.props.totalBalls.pink &&
                 <DragDropContainer targetKey="foo" dragData={{points: 6, amount:1, type: "colors", ball: "pink"}} >
                 <img  className="img" src={pink} alt="img"></img>

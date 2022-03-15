@@ -163,7 +163,8 @@ function App() {
   return (
 
   <>
-  <Grid   container
+  <Container fixed class="bg1"> 
+  <Grid
   direction="column"
   justifyContent="center"
   alignItems="center">
@@ -194,6 +195,8 @@ function App() {
         message={<Alert severity="success">{msg}</Alert>}
         action={action}
       />
+
+</Container>
   </>
     
 

@@ -13,9 +13,9 @@ export default function Mainpage() {
     return (
       <>
       
-    <Container class="bg1"> 
+    {/* <Container fixed class="bg1">  */}
    
-    <Stack
+    <Stack 
       direction="column"
       justifyContent="center"
       alignItems="center"
@@ -28,7 +28,7 @@ export default function Mainpage() {
     </Stack>
 
     
-    </Container>
+    {/* </Container> */}
     </>
     )
 }
