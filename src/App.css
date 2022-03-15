@@ -496,7 +496,7 @@ option {
   font-size: 1rem;
   outline: none;
   width: 250px;
-  height: 134px;
+  height: 100px;
   text-align: "center";
 }
 
@@ -546,7 +546,7 @@ button,
   display: inline-block;
   font-size: 1rem;
   outline: none;
-  padding: 0.75rem;
+  padding: 0.4rem;
 }
 
 

@@ -30,14 +30,14 @@ export default function Foul(props) {
     return (
         
     <>
-        {/* Scores and additional information gridbox */}
+    {/* Scores and additional information gridbox */}
     <Grid 
         container
         direction={"row"}
         justifyContent={"center"}
         alignItems={"center"}
         textAlign={"center"}
-        mt={0.01}
+        mb={0}
         sx={{
             height: '5%',
             width: '100%',
@@ -45,9 +45,9 @@ export default function Foul(props) {
     }}>
 
             {/* Fouls */}
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
                 Fouls
-            </Grid>
+            </Grid> */}
             
             <Grid item xs={2} >
                 <DragDropContainer targetKey="foo" dragData={{points: 4, amount:1, type: "foul"}} >

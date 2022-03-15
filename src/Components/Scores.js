@@ -28,7 +28,7 @@ export default function Scores(props) {
     container
     justifyContent={"center"}
     >
-        <Grid item xs={8}  marginRight={0.5} mt={1}>
+        <Grid item xs={8}  marginRight={0.5}>
             
             <Paper elevation={1} sx={{bgcolor: styles.paperContainer.background.paper}}>
             <Grid 

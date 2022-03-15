@@ -163,10 +163,13 @@ function App() {
   return (
 
   <>
-  <Grid direction="column">
+  <Grid   container
+  direction="column"
+  justifyContent="center"
+  alignItems="center">
 
     {/* <Body with all functionalities */}
-      <Grid  item xs={10}>
+      <Grid  item xs={8}>
       <Routes>
           <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
           <Route path="/" element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
@@ -177,7 +180,7 @@ function App() {
       </Grid>
 
     {/* //Navigation bar */}
-      <Grid item xs={2}>
+      <Grid item xs={4}>
       <BottomNavigation1></BottomNavigation1>  
       </Grid>
   </Grid>

@@ -5,7 +5,6 @@ import { DropTarget } from 'react-drag-drop-container';
 import SnookerTable from "./SnookerTable";
 import table2 from "./table2.png"
 import Foul from "./Foul";
-
 import Scores from "./Scores";
 import { Container } from "reactstrap";
 
@@ -107,7 +106,7 @@ export default function Snooker(props) {
             </Grid>
 
             {/*Snooker table component containing draggable balls  */}
-            <Grid item  xs={9.33} sm={5.7} xl={3}    sx={{height:500}} style={styles.paperContainer}>
+            <Grid item  xs={9.33} sm={5.7} xl={3} sx={{height:500}} style={styles.paperContainer}>
                 <SnookerTable totalBalls={props.totalBalls} props={props} ></SnookerTable>
             </Grid>
             
