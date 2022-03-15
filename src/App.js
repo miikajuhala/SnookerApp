@@ -10,7 +10,7 @@ import Snooker from './Components/Snooker';
 import Results from './Components/Results';
 import BottomNavigation1 from './Components/BottomNavigation1';
 import Settings from './Components/Settings';
-import { Container, IconButton, Snackbar } from '@mui/material';
+import { Container, Grid, IconButton, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -163,21 +163,26 @@ function App() {
   return (
 
   <>
-  
-    {/* <Body with all functionalities */}
-    <Routes>
-        <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
-        <Route path="/" element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
-        <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg} saveGame={saveGame}/> }> </Route>
-        <Route path="/results"  element={<Results />}></Route>
-        <Route path="/settings" element={<Settings />}></Route>
-    </Routes>
+  <Grid direction="column">
 
+    {/* <Body with all functionalities */}
+      <Grid  item xs={10}>
+      <Routes>
+          <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
+          <Route path="/" element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
+          <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg} saveGame={saveGame}/> }> </Route>
+          <Route path="/results"  element={<Results />}></Route>
+          <Route path="/settings" element={<Settings />}></Route>
+      </Routes>
+      </Grid>
 
     {/* //Navigation bar */}
-     <BottomNavigation1></BottomNavigation1>  
-
-     <Snackbar
+      <Grid item xs={2}>
+      <BottomNavigation1></BottomNavigation1>  
+      </Grid>
+  </Grid>
+   
+   <Snackbar
         lenght={13}
         open={open}
         anchorOrigin={{ vertical:"bottom", horizontal:"center" }}
@@ -186,7 +191,6 @@ function App() {
         message={<Alert severity="success">{msg}</Alert>}
         action={action}
       />
-   
   </>
     
 
