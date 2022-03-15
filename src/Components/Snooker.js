@@ -85,7 +85,7 @@ export default function Snooker(props) {
 
     return (
     <>
-    <Container sx={{ height: "100%", width: '100%', minWidth:364}} >
+    <Box sx={{ height: "100%", width: '100%', minWidth:364}} >
             
         {/* Scores */}
         <Scores props={props}></Scores>
@@ -95,12 +95,12 @@ export default function Snooker(props) {
         <Grid container>
         
             {/* player 1 target */}
-            <Grid  item xs={1.33} sm={3.15} xl={4.5} sx={styles.targetContainer}> 
+            <Grid  item xs={1.33333} sm={3.15} xl={4.5} sx={styles.targetContainer}> 
                 <Paper class="sivupaneeli" elevation={20} sx={{bgcolor: styles.targetContainer.bg}}>
                     <DropTarget 
                         targetKey="foo" 
                         onHit={(e)=>handleHit(e, props.player1, props.setPlayer1)}>
-                        <Box className="my_target" sx={{height:450}}> Player 1 target</Box>
+                        <Box className="my_target" sx={{height:450}}> P1</Box>
                     </DropTarget>
                 </Paper>
             </Grid>
@@ -117,7 +117,7 @@ export default function Snooker(props) {
                     <DropTarget 
                         targetKey="foo" 
                         onHit={(e)=>{handleHit(e, props.player2, props.setPlayer2)}}>
-                        <Box className="my_target"  sx={{height:450 }} >Player 2 target</Box>
+                        <Box className="my_target"  sx={{height:450 }} >P2</Box>
                     </DropTarget>
                 </Paper>
             </Grid>
@@ -131,7 +131,7 @@ export default function Snooker(props) {
         {/* Fouls */}
         <Foul totalBalls={props.totalBalls} undoRecent={props.undoRecent} restartGame={props.restartGame} saveGame={props.saveGame} props={props}></Foul>
 
-    </Container>
+    </Box>
    
     </>
     )

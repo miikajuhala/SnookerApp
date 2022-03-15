@@ -31,8 +31,8 @@ function App() {
    //Snookers infromation stored here during game
    const [totalBalls, settotalBalls] = React.useState({reds: 2, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
    const [undo, setundo] = React.useState({recentBall:"", recentPlayer:null, recentPoints:0, setRecentPlayer: null})
-   const [player1, setPlayer1] = React.useState({id: 1, name: "player1", points: 0, fouls: 0})
-   const [player2, setPlayer2] = React.useState({id: 2, name: "player2", points: 0, fouls: 0})
+   const [player1, setPlayer1] = React.useState({id: 1, name: "P1", points: 0, fouls: 0})
+   const [player2, setPlayer2] = React.useState({id: 2, name: "P2", points: 0, fouls: 0})
 
    //rest consts
    const id = sessionStorage.getItem("userId");
@@ -163,14 +163,10 @@ function App() {
   return (
 
   <>
-  <Container class="bg"> 
-  <Grid 
-  direction="column"
-  justifyContent="center"
-  alignItems="center">
+  {/* <Container class="bg">  */}
 
-    {/* <Body with all functionalities */}
-      <Grid  item xs={8}>
+
+      {/* <Body with all functionalities */}
       <Routes>
           <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
           <Route path="/" element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
@@ -178,13 +174,12 @@ function App() {
           <Route path="/results"  element={<Results />}></Route>
           <Route path="/settings" element={<Settings />}></Route>
       </Routes>
-      </Grid>
+      
 
     {/* //Navigation bar */}
-      <Grid item xs={4}>
-      <BottomNavigation1></BottomNavigation1>  
-      </Grid>
-  </Grid>
+    <BottomNavigation1></BottomNavigation1>  
+     
+  
    
    <Snackbar
         lenght={13}
@@ -196,7 +191,7 @@ function App() {
         action={action}
       />
 
- </Container>
+ {/* </Container> */}
   </>
     
 
