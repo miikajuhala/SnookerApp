@@ -131,24 +131,28 @@ html.dark {
 }
 .navbar {
   border-bottom: solid 1px #EBEBEB;
+  height: 8%;
+  background-color: rgb(216, 216, 216);
+  
+  
 }
 .bottom-tab-nav {
   border-top: solid 1px #EBEBEB;
 }
 .nav-link,
 .bottom-nav-link {
-  color: #55575b;
+  color: #39393a;
 }
 .bottom-nav-link.active {
   color: #615f61;
 }
 .bottom-tab-label {
   font-size: 12px;
+  color:rgb(113, 118, 119) ;
 }
 
 .text-primary {
   color: #41403e;
-  color: var(--primary);
 }
 .border {
   border-color: #41403e;

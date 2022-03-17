@@ -162,7 +162,7 @@ function App() {
 
   return (
 
-  <>
+  <body className='bg'>
   {/* <Container class="bg">  */}
 
 
@@ -192,7 +192,7 @@ function App() {
       />
 
  {/* </Container> */}
-  </>
+  </body>
     
 
   );

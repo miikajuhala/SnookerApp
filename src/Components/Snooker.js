@@ -85,7 +85,7 @@ export default function Snooker(props) {
 
     return (
     <>
-    <Box sx={{ height: "100%", width: '100%', minWidth:364}} >
+    <Box sx={{height: "100%", width: '100%', minWidth:364}} >
             
         {/* Scores */}
         <Scores props={props}></Scores>
