@@ -531,6 +531,7 @@ option {
   width:350px;
   margin-bottom: 55px;
   text-align: center;
+  margin-top: 3px;
 }
 
 button,
@@ -606,7 +607,8 @@ button,
   background-color: #41403e;
   border-style: solid;
   border-width: 2px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+  
 }
 .accordion2{
   border-bottom-left-radius: 15px 255px;
