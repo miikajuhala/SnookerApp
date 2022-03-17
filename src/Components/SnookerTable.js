@@ -26,7 +26,7 @@ export default function SnookerTable(props) {
             direction={"row"}
             justifyContent={"center"}
             alignItems={"center"}
-            mt={16}
+            mt={15}
         >
         
             <Grid item  sx={{}}>  
