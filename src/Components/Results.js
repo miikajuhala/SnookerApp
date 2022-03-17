@@ -28,7 +28,8 @@ export default function Results(props) {
         .then(res => {
             console.log(frames);
             console.log(res.data._embedded.frames);
-            setFrames(res.data._embedded.frames);
+            //reverse to display newest first
+            setFrames(res.data._embedded.frames.reverse());
         })
     }
 
@@ -56,7 +57,7 @@ export default function Results(props) {
          {/* <Typography>  </Typography>             
                 <Typography> {frame.player2}: {frame.player2Score}</Typography>
                 <Typography sx={{textAlign:"right",}}> {frame.player2}: {frame.player2Score}</Typography> */}
-
+       <Box marginBottom={20}>        
         {frames.map((frame, index) => 
         
         <Accordion key={index} className="accordion">
@@ -65,8 +66,8 @@ export default function Results(props) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-            <Typography sx={{marginRight:5, marginLeft:2}} >{frame.player1}: {frame.player1Score} </Typography>
-            <Typography>{frame.player2}: {frame.player2Score} </Typography>
+            <Typography sx={{marginLeft:2}} >{frame.player1}: {frame.player1Score} </Typography>
+            <Typography sx={{marginLeft:7}}>{frame.player2}: {frame.player2Score} </Typography>
         </AccordionSummary>
         <AccordionDetails className="accordion2">
         
@@ -79,10 +80,10 @@ export default function Results(props) {
             <button className="paper-btn-results" onClick={()=>alert("game delete todo")}>Delete</button>
         </AccordionDetails>
         </Accordion>
-
+        
 
         )}
-        
+        </Box>
     </Container>
     </>
     )
