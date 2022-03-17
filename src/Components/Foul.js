@@ -52,7 +52,7 @@ export default function Foul(props) {
             <Grid item xs={2} >
                 <DragDropContainer targetKey="foo" dragData={{points: 4, amount:1, type: "foul"}} >
                     <Paper elevation={6} sx={{minWidth:55}}>
-                        <Typography variant="overline" display="block" gutterBottom>
+                        <Typography variant="overline" display="block" gutterBottom >
                         +4
                         </Typography>
                     </Paper>
@@ -104,7 +104,7 @@ export default function Foul(props) {
                     onClick={()=>props.undoRecent()}>
                         Undo
                     </Button> */}
-                    <input onClick={()=>props.undoRecent()} type="button" class="paper-btn-fouls" value="Undo"/>
+                    <input onClick={()=>props.undoRecent()} type="button" class="paper-btn-fouls textfont h3" value="Undo"/>
                 {/* </Paper> */}
             </Grid>
             <Grid item xs={3} marginLeft={1.5} marginRight={1.5}  sx={{mb:1}}>
@@ -112,7 +112,7 @@ export default function Foul(props) {
                     {/* <Button variant="overline"  sx={{textTransform: "none"}} onClick={props.restartGame}>
                         Restart 
                     </Button> */}
-                    <input onClick={()=>props.restartGame()} type="button" class="paper-btn-fouls" value="Restart"/>
+                    <input onClick={()=>props.restartGame()} type="button" class="paper-btn-fouls textfont h3" value="Restart"/>
                 {/* </Paper> */}
             </Grid>
             <Grid item xs={3.4}  sx={{mb:1}}>
@@ -120,7 +120,7 @@ export default function Foul(props) {
                     {/* <Button variant="overline" sx={{textTransform: "none"}} onClick={handleOpen} >
                         Save Game
                     </Button> */}
-                    <input onClick={()=>handleOpen()} type="button" class="paper-btn-fouls" value="Save Game"/>
+                    <input onClick={()=>handleOpen()} type="button" class="paper-btn-fouls textfont h3" value="Save Game"/>
                 {/* </Paper> */}
             </Grid>
 

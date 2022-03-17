@@ -557,7 +557,32 @@ button,
   outline: none;
   padding: 0.4rem;
 }
-
+button,
+.paper-btn-results {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgba(0, 0, 0, 0.2);
+  transition: all 235ms ease-in-out 0s;
+  color: #41403e;
+  color: var(--primary);
+  border-color: #41403e;
+  background-color: #41403e;
+  background-color: var(--main-background);
+  align-self: center;
+  background-image: none;
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  outline: none;
+  padding: 0.4rem;
+  margin-left: 1px;
+  margin-right: 33px;
+}
 
 
 .sivupaneeli{
@@ -575,8 +600,70 @@ button,
   border-width: 2px;
 }
 
+.accordion{
+  color: var(--primary);
+  border-color: #41403e;
+  background-color: #41403e;
+  border-style: solid;
+  border-width: 2px;
+  margin-bottom: 5px;
+}
+.accordion2{
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 22px;
+  border-top-right-radius: 32px 225px;
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgba(0, 0, 0, 0.2);
+  color: var(--primary);
+  border-color: #41403e;
+  border-style: solid;
+  border-width: 2.1px;
+  margin: 5px;
+  margin-top: 0;
+}
+
+
+.text {
+  font-family: "Patrick Hand SC", sans-serif;
+  font-weight: normal;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.textfont {
+  font-family: "Patrick Hand SC", sans-serif;
+  font-weight: normal;
+}
+
+
+h2 {
+  font-size: 3rem;
+}
+
+
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+
+
+
 @media only screen and (max-width: 520px) {
-  button,
+button,
 .paper-btn,
 [type=button] {
     display: inline-block;

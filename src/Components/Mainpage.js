@@ -22,9 +22,9 @@ export default function Mainpage() {
       spacing={4}
     >
         <div class="otsikko">Snooker</div>
-        <input onClick={()=>Navigate("/snooker")}  type="button" class="paper-btn-menu" value="Snooker"/>
-        <input onClick={()=>Navigate("/results")} type="button" class="paper-btn-menu" value="Results"/>
-        <input onClick={()=>Navigate("/login")}  type="button" class="paper-btn-menu" value="Login"/>   
+        <input onClick={()=>Navigate("/snooker")}  type="button" class="paper-btn-menu textfont h1"  value="Snooker"/>
+        <input onClick={()=>Navigate("/results")} type="button" class="paper-btn-menu textfont h1" value="Results"/>
+        <input onClick={()=>Navigate("/login")}  type="button" class="paper-btn-menu textfont h1" value="Login"/>   
     </Stack>
 
     

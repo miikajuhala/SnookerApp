@@ -2,18 +2,20 @@
 import React from "react";
 import { Box, Button, Container, Grid, Modal, Paper, Typography } from "@mui/material";
 import axios from "axios";
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import { textAlign } from "@mui/system";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useNavigate } from "react-router-dom";
 
 
 
-
-export default function Results() {
+export default function Results(props) {
 
     //storing frames
     const [frames, setFrames] = React.useState([]);
     const id = sessionStorage.getItem("userId");
-    
+    const navi = useNavigate()
 
     React.useEffect(() => {getFrames()},[]);
 
@@ -30,38 +32,55 @@ export default function Results() {
         })
     }
 
-
-    // TODO:this
-     const continueGame =()=>{
-         //set all frame info to app.js consts and redirect to Snooker component
+    
+    //
+     const continueGame =(i)=>{
+        console.log(frames[i].reds)
+        props.settotalBalls({reds: frames[i].reds, colors: frames[i].colors, yellow: frames[i].yellow, green: frames[i].green, brown: frames[i].brown, blue: frames[i].blue, pink: frames[i].pink, black: frames[i].black })
+        props.setundo({recentBall:"", recentPlayer:null, recentPoints:0, setRecentPlayer: null})
+        props.setPlayer1({id: 1,  name: frames[i].player1, points: frames[i].player1Score, fouls: 0})
+        props.setPlayer2({id: 1,  name: frames[i].player2, points: frames[i].player2Score, fouls: 0});
+        navi("/snooker")
      }
     
-    //paper item styles
-    const Item = styled(Paper)(({ theme }) => ({
-        ...theme.typography.body2,
-        textAlign: 'left',
-        color: theme.palette.text.secondary,
-        height: 60,
-        lineHeight: '60px',
-        alignItems:"center",
-    }));
+     
     
     return (
     <>
-    <Container sx={{ width: '100%', maxWidth: 500 }}>
+    <Container>
 
-        <Paper>
-            <Typography variant="h2" component="h2" sx={{textAlign: 'center', mt:2}}>
-                Results
-            </Typography>
+        <Paper sx={{marginBottom:3, marginTop:2}}>
+            <h1 className="text">Saved Games</h1>
         </Paper>
         
-        {frames.map((frame, index) => 
-            <Item elevation={7} sx={{m:2}} >
-                <Typography> {frame.player1}: {frame.player1Score}  </Typography>             
+         {/* <Typography>  </Typography>             
                 <Typography> {frame.player2}: {frame.player2Score}</Typography>
-                <Typography sx={{textAlign:"right",}}> {frame.player2}: {frame.player2Score}</Typography>
-            </Item>        
+                <Typography sx={{textAlign:"right",}}> {frame.player2}: {frame.player2Score}</Typography> */}
+
+        {frames.map((frame, index) => 
+        
+        <Accordion key={index} className="accordion">
+        <AccordionSummary 
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+            <Typography sx={{marginRight:5, marginLeft:2}} >{frame.player1}: {frame.player1Score} </Typography>
+            <Typography>{frame.player2}: {frame.player2Score} </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="accordion2">
+        
+            <Typography>
+                {   
+                "name: "+frame.name +"  |  "+"reds on table: "+frame.reds
+                }
+            </Typography>
+            <button className="paper-btn-results" onClick={()=>continueGame(index)}>Continue game</button>
+            <button className="paper-btn-results" onClick={()=>alert("game delete todo")}>Delete</button>
+        </AccordionDetails>
+        </Accordion>
+
+
         )}
         
     </Container>

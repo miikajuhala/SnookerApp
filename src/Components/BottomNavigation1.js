@@ -33,11 +33,11 @@ export default function BottomNavigation1() {
     {/* Bottom Tab Navigator*/}
     <nav className="navbar fixed-bottom navbar-light bottom-tab-nav" role="navigation">
         <Nav className="w-100">
-          <div className=" d-flex flex-row justify-content-around w-100">
+          <div className="d-flex flex-row justify-content-around w-100">
             {
               tabs.map((tab, index) =>(
                 <NavItem key={`tab-${index}`}>
-                  <NavLink to={tab.route} className="nav-link bottom-nav-link" activeClassName="active">
+                  <NavLink to={tab.route} className="nav-link bottom-nav-link">
                     <div>
                       <FontAwesomeIcon color='rgb(113, 118, 119)' size="sm" icon={tab.icon}/>
                       <div className="bottom-tab-label">{tab.label}</div>

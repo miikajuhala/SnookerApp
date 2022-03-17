@@ -30,7 +30,7 @@ function App() {
 
 
    //Snookers infromation stored here during game
-   const [totalBalls, settotalBalls] = React.useState({reds: 2, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
+   const [totalBalls, settotalBalls] = React.useState({reds: 15, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
    const [undo, setundo] = React.useState({recentBall:"", recentPlayer:null, recentPoints:0, setRecentPlayer: null})
    const [player1, setPlayer1] = React.useState({id: 1, name: "P1", points: 0, fouls: 0})
    const [player2, setPlayer2] = React.useState({id: 2, name: "P2", points: 0, fouls: 0})
@@ -80,7 +80,7 @@ function App() {
   //  function that handles full restart
    const restartGame = ()=>{
     confirmAlert({
-      lenght: '50px',
+      width: "44px",
       title: 'Restart scores and table?',
       message: "Scores will not be saved",
       buttons: [
@@ -88,7 +88,7 @@ function App() {
           label: 'Yes',
           onClick: () => 
           {
-            settotalBalls({reds: 2, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
+            settotalBalls({reds: 15, colors: 6, yellow: true, green: true, brown: true, blue: true, pink: true, black: true })
             setPlayer1({...player1, points: 0, fouls: 0})
             setPlayer2({...player2, points: 0, fouls: 0})
             setOpen(true)
@@ -177,7 +177,7 @@ function App() {
           <Route path="/login"  element={<Login logout={Logout} logged={logged}  setLogged={setLogged}   setOpen={setOpen} setMsg={setMsg}/>}></Route>
           <Route path="/" element={<Mainpage logout={Logout} logged={logged} setLogged={setLogged}/> }></Route>
           <Route path="/snooker"  element={<Snooker totalBalls={totalBalls} settotalBalls={settotalBalls} undo={undo} setundo={setundo} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} restartGame={restartGame} undoRecent={undoRecent} setOpen={setOpen} setMsg={setMsg} saveGame={saveGame}/> }> </Route>
-          <Route path="/results"  element={<Results />}></Route>
+          <Route path="/results"  element={<Results settotalBalls={settotalBalls} setundo={setundo} setPlayer1={setPlayer1} setPlayer2={setPlayer2} setOpen={setOpen} setMsg={setMsg}/>}></Route>
           <Route path="/settings" element={<Settings />}></Route>
       </Routes>
       
