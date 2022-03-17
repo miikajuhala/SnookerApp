@@ -105,7 +105,7 @@ function App() {
   }
 
    // function that handles undo button in snooker game
-   const undoRecent = ()=>{
+   const undoRecent = ()=>{ 
   
       // if recent ball was red => add one red and take reds points from player
       if(undo.recentBall==="reds"){
