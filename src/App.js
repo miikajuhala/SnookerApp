@@ -10,11 +10,12 @@ import Snooker from './Components/Snooker';
 import Results from './Components/Results';
 import BottomNavigation1 from './Components/BottomNavigation1';
 import Settings from './Components/Settings';
-import { Container, Grid, IconButton, Snackbar } from '@mui/material';
+import { Box, Container, Grid, IconButton, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import CloseIcon from '@mui/icons-material/Close';
+import Helmet from 'react-helmet';
 // import * as all from 'react-paper-css';
 
 //TODO: for future native implementation, jwt and id must be passed from native login to the browser element so login stays
@@ -161,10 +162,15 @@ function App() {
 
 
   return (
+    
 
-  <body className='bg'>
-  {/* <Container class="bg">  */}
-
+  <div>
+  <Helmet>
+  <style>{'body { background-color: #f8f0e2; }'}</style>
+  </Helmet>
+           
+  
+ 
 
       {/* <Body with all functionalities */}
       <Routes>
@@ -175,10 +181,11 @@ function App() {
           <Route path="/settings" element={<Settings />}></Route>
       </Routes>
       
+ 
 
     {/* //Navigation bar */}
-    <BottomNavigation1></BottomNavigation1>  
-     
+    <BottomNavigation1></BottomNavigation1>
+    
   
    
    <Snackbar
@@ -191,9 +198,11 @@ function App() {
         action={action}
       />
 
- {/* </Container> */}
-  </body>
-    
+ 
+  
+ 
+  
+  </div>
 
   );
 }

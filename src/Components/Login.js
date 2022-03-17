@@ -187,7 +187,7 @@ axios.get("https://snookerserver.herokuapp.com/api/getid", {
 
 return( 
     
-<main> 
+<main className='bg2'> 
 
 {/* Paper that shows if user already logged in */}
 {props.logged===true && 
@@ -219,10 +219,10 @@ return(
 
     {props.logged ===false && 
 <Box sx={{
-bgcolor: 'background.paper',
-maxwidth: 500,
-position: 'relative',
-minHeight: 200,
+  bgcolor: 'background.paper',
+  maxwidth: 500,
+  position: 'relative',
+  minHeight: 200,
   }}>
 
     <AppBar position="static" color="default">

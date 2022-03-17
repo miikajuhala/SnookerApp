@@ -11,7 +11,7 @@ export default function Mainpage() {
     let Navigate = useNavigate();
 
     return (
-      <>
+      <div>
       
     {/* <Container fixed class="bg1">  */}
    
@@ -29,6 +29,6 @@ export default function Mainpage() {
 
     
     {/* </Container> */}
-    </>
+    </div>
     )
 }

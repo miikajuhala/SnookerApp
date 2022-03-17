@@ -126,18 +126,23 @@ html.dark {
   min-height: 500px;
   
 }
+.bg2 {
+  background-color: #ffffff;
+}
+
 .bg3 {
   background-color: #9b6508;
+  height: 100%;
 }
 .navbar {
-  border-bottom: solid 1px #EBEBEB;
+  border-bottom: solid 1px #838383;
   height: 8%;
-  background-color: rgb(216, 216, 216);
-  
+  background-color: rgb(255, 255, 255);
+  text-align: center;
   
 }
 .bottom-tab-nav {
-  border-top: solid 1px #EBEBEB;
+  border-top: solid 1px #838383;
 }
 .nav-link,
 .bottom-nav-link {

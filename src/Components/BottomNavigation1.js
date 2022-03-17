@@ -38,7 +38,7 @@ export default function BottomNavigation1() {
               tabs.map((tab, index) =>(
                 <NavItem key={`tab-${index}`}>
                   <NavLink to={tab.route} className="nav-link bottom-nav-link" activeClassName="active">
-                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                    <div>
                       <FontAwesomeIcon color='rgb(113, 118, 119)' size="sm" icon={tab.icon}/>
                       <div className="bottom-tab-label">{tab.label}</div>
                     </div>
