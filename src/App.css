@@ -115,7 +115,11 @@ html.dark {
   This Loop will generate the various .text- and .background- classes
   based on the $colors map above.
 */
-
+.img2 {
+  width: 17px;
+  height: 17px;
+  
+}
 
 .bg {
   background-color: #f8f0e2;
@@ -608,7 +612,7 @@ button,
   border-style: solid;
   border-width: 2px;
   margin-bottom: 20px;
-  
+  text-align: left;
 }
 .accordion2{
   border-bottom-left-radius: 15px 255px;

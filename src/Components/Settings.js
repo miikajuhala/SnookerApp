@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Paper } from "@mui/material";
 import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
 

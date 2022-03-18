@@ -6,7 +6,7 @@ import SnookerTable from "./SnookerTable";
 import table2 from "./table2.png"
 import Foul from "./Foul";
 import Scores from "./Scores";
-import { Container } from "reactstrap";
+
 
 
 
