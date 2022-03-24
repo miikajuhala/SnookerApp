@@ -1,7 +1,5 @@
-import {Button, Grid, Paper, Typography } from "@mui/material";
-import { bgcolor } from "@mui/system";
-import TextField from '@mui/material/TextField';
-import EditIcon from '@mui/icons-material/Edit';
+import {Grid, Paper, Typography } from "@mui/material";
+
 
 
 export default function Scores(props) {
@@ -14,13 +12,6 @@ export default function Scores(props) {
         }
 
     };
-    const handleChange1 = (event)=>{
-        props.props.setPlayer1({...props.props.player1, name: event.target.value});
-    };
-
-    const changename =()=>{
-        
-    }
 
     return (
         

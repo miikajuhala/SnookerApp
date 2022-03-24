@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Box, Button, Container, Grid, Modal, Paper, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 import axios from "axios";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -17,7 +17,7 @@ export default function Results(props) {
     const id = sessionStorage.getItem("userId");
     const navi = useNavigate()
 
-    React.useEffect(() => {getFrames()},[]);
+    React.useEffect(() => {getFrames()},);
 
 
     const getFrames = () =>{
@@ -73,7 +73,7 @@ export default function Results(props) {
         
             <Typography>
                 {   
-                "name: "+frame.name +"  |  "+"reds on table: "+frame.reds
+                frame.name +"  |  reds on table: "+frame.reds
                 }
             </Typography>
             <button className="paper-btn-results" onClick={()=>continueGame(index)}>Continue game</button>
