@@ -1,6 +1,8 @@
 # Still under current developement
 # For mobile use!
 # Snooker app
+# Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
+# run on expo mobile envioroment to test
 - Snooker game score calculations
 - Undo, restart and save game
 - Mix of native app and in-app browser
