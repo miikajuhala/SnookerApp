@@ -1,4 +1,4 @@
-# Still under developement
+# Under developement
 # For mobile use!
 # Snooker app
 # Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
