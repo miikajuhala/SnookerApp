@@ -1,6 +1,6 @@
 # For mobile use, this repo is running in cloud, use this from mobile client:
-# Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
-# run on expo mobile envioroment to test
+# 1. Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
+# 2. run on expo mobile envioroment to test
 - Snooker game score calculations
 - Undo, restart and save game
 - Mix of native app and in-app browser
