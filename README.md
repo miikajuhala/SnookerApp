@@ -1,6 +1,6 @@
 !heroku servers update on 28.11 might cause temporary problems!
 
-# This repo is running in cloud, use this from mobile client:
+# This app is for mobile use; currently running in cloud, use this from mobile client:
 # 1. Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
 # 2. run on expo mobile envioroment to test
 - Snooker game score calculations
