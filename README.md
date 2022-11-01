@@ -4,7 +4,9 @@
 
 https://user-images.githubusercontent.com/77334107/199263270-af002a5b-02a8-4920-859e-194ee22bcae9.mov
 
+![IMG-1172](https://user-images.githubusercontent.com/77334107/199264141-61978212-6cd9-4045-a7f5-b237929e0fbc.PNG)
 
+![IMG-1173](https://user-images.githubusercontent.com/77334107/199264144-ba6c138c-0eeb-4165-b6b1-f5c812576fd5.PNG)
 
 # This app is for mobile use; currently running in cloud, use this from mobile client:
 # 1. Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
