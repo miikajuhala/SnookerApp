@@ -1,5 +1,17 @@
 !heroku servers update on 28.11 might cause temporary problems!
 
+
+
+![IMG-1173](https://user-images.githubusercontent.com/77334107/199263226-e0530fcc-48f6-40bb-aec0-1c79c4b2abb4.PNG)
+
+
+![IMG-1172](https://user-images.githubusercontent.com/77334107/199263232-584077ba-cdb2-4ea5-8d1a-134cb5b61f49.PNG)
+
+
+https://user-images.githubusercontent.com/77334107/199263270-af002a5b-02a8-4920-859e-194ee22bcae9.mov
+
+
+
 # This app is for mobile use; currently running in cloud, use this from mobile client:
 # 1. Clone repo https://github.com/miikajuhala/SnookerAppMobileEnv -> 
 # 2. run on expo mobile envioroment to test
